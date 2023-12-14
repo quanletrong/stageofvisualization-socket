@@ -29,8 +29,11 @@ io.on('connection', (socket) => {
         io.emit('user-chat', data)
     })
     socket.on('update-chat-noi-bo', data => {
-        console.log('update-chat-noi-bo');
         io.emit('update-chat-noi-bo', data)
+    })
+
+    socket.on('update-chat-khach', data => {
+        io.emit('update-chat-khach', data)
     })
 
 })
