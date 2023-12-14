@@ -10,17 +10,20 @@ const {
 
 const io = new Server(server, {
     cors: {
-        origin: ["https://stageofvisualization.com"],
-        handlePreflightRequest: (req, res) => {
-            res.writeHead(200, {
-                "Access-Control-Allow-Origin": "https://stageofvisualization.com",
-                "Access-Control-Allow-Methods": "GET,POST",
-                "Access-Control-Allow-Headers": "my-custom-header",
-                "Access-Control-Allow-Credentials": true
-            });
-            res.end();
-        }
-    }
+        origin: "*",
+        'methods': ["GET", "POST"],
+        'credentials': false
+        // handlePreflightRequest: (req, res) => {
+        //     res.writeHead(200, {
+        //         "Access-Control-Allow-Origin": "https://stageofvisualization.com",
+        //         "Access-Control-Allow-Methods": "GET,POST",
+        //         "Access-Control-Allow-Headers": "my-custom-header",
+        //         "Access-Control-Allow-Credentials": true
+        //     });
+        //     res.end();
+        // }
+    },
+    cookie: false
 })
 
 io.on('connection', (socket) => {
