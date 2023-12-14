@@ -10,10 +10,10 @@ const {
 
 const io = new Server(server, {
     cors: {
-        origin: ["http://stageofvisualization.local"],
+        origin: ["http://stageofvisualization.local", "https://stageofvisualization.com"],
         handlePreflightRequest: (req, res) => {
             res.writeHead(200, {
-                "Access-Control-Allow-Origin": "http://stageofvisualization.local",
+                "Access-Control-Allow-Origin": ["http://stageofvisualization.local", "https://stageofvisualization.com"],
                 "Access-Control-Allow-Methods": "GET,POST",
                 "Access-Control-Allow-Headers": "my-custom-header",
                 "Access-Control-Allow-Credentials": true
