@@ -1,3 +1,4 @@
+const {SERVER_CONFIG} = require('./glb/cfglb')
 const express = require('express')
 const app = express()
 
@@ -34,6 +35,6 @@ io.on('connection', (socket) => {
 
 })
 
-server.listen(3001, () => {
+server.listen(SERVER_CONFIG.PORT, () => {
     console.log('listening on port 3000')
 })
