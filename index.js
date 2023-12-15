@@ -39,6 +39,6 @@ io.on('connection', (socket) => {
 
 })
 
-httpServer.listen(SERVER_CONFIG.PORT, () => {
-    console.log(`listening on port ${SERVER_CONFIG.PORT}`)
+httpServer.listen('quancoder.online:3000', () => {
+    console.log(`listening on port ${'quancoder.online:3000'}`)
 })
