@@ -1,35 +1,35 @@
-const { SERVER_CONFIG } = require('./glb/cfglb')
+const { SERVER_CONFIG, ENV } = require('./glb/cfglb')
 const express = require('express')
+const { Server } = require('socket.io')
 const app = express()
-
 const fs = require("fs");
-const https = require('https')
-const cors = require('cors')
-const options = {
-    key: fs.readFileSync("/etc/ssl/private/server.quancoder.online.key"),
-    cert: fs.readFileSync("/etc/ssl/certs/server.quancoder.online.crt")
-  };
-const httpServer = https.createServer(options, app)
-const {Server} = require('socket.io')
+const http = require(ENV === 'localhost' ? 'http' : 'https')
 
-// 
-const corsOptions = {
-    origin: ["https://stageofvisualization.com", "http://stageofvisualization.local"],
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-};
+// cấu hình httpServer
+var httpServer = null;
+if (ENV === 'localhost') {
+    httpServer = http.createServer(app)
+} else {
+    const options = {
+        key: fs.readFileSync("/etc/ssl/private/server.quancoder.online.key"),
+        cert: fs.readFileSync("/etc/ssl/certs/server.quancoder.online.crt")
+    };
+    httpServer = http.createServer(options, app)
+}
 
 
-// for Socket.IO
+
+// cấu hình Socket.IO
 const io = new Server(httpServer, {
-    cors: corsOptions
+    cors: {
+        origin: ["https://stageofvisualization.com", "http://stageofvisualization.local"],
+        methods: ["GET", "POST"],
+        allowedHeaders: ["my-custom-header"],
+        credentials: true
+    }
 });
 
-
-// for Express
-app.use(cors(corsOptions));
-
+// socket ON
 io.on('connection', (socket) => {
     console.log('user connect');
     socket.on('on-chat', data => {
