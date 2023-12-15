@@ -1,9 +1,9 @@
 const { SERVER_CONFIG } = require('./glb/cfglb')
 const express = require('express')
 const app = express()
-const http = require('http')
+const https = require('https')
 // const cors = require('cors')F
-const httpServer = http.createServer(app)
+const httpServer = https.createServer(app)
 const {Server} = require('socket.io')
 
 // 
