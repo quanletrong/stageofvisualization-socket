@@ -1,9 +1,15 @@
 const { SERVER_CONFIG } = require('./glb/cfglb')
 const express = require('express')
 const app = express()
-const http = require('http')
+
+const fs = require("fs");
+const https = require('https')
 const cors = require('cors')
-const httpServer = http.createServer(app)
+const options = {
+    key: fs.readFileSync("/etc/ssl/private/server.quancoder.online.key"),
+    cert: fs.readFileSync("/etc/ssl/certs/server.quancoder.online.crt")
+  };
+const httpServer = https.createServer(options, app)
 const {Server} = require('socket.io')
 
 // 
