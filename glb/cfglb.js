@@ -1,5 +1,7 @@
 
 exports.SERVER_CONFIG = {
-    'HOST': 'api.dev.vn',
+    'HOST': '',
     'PORT': 5000
 };
+
+exports.ENV = 'product';
