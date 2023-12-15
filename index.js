@@ -1,30 +1,28 @@
-const {SERVER_CONFIG} = require('./glb/cfglb')
+const { SERVER_CONFIG } = require('./glb/cfglb')
 const express = require('express')
 const app = express()
-
 const http = require('http')
-const server = http.createServer(app)
-const {
-    Server
-} = require('socket.io')
+// const cors = require('cors')F
+const httpServer = http.createServer(app)
+const {Server} = require('socket.io')
 
-const io = new Server(server, {
-    cors: {
-        origin: "*",
-        'methods': ["GET", "POST"],
-        'credentials': false
-        // handlePreflightRequest: (req, res) => {
-        //     res.writeHead(200, {
-        //         "Access-Control-Allow-Origin": "https://stageofvisualization.com",
-        //         "Access-Control-Allow-Methods": "GET,POST",
-        //         "Access-Control-Allow-Headers": "my-custom-header",
-        //         "Access-Control-Allow-Credentials": true
-        //     });
-        //     res.end();
-        // }
-    },
-    cookie: false
-})
+// 
+const corsOptions = {
+    origin: ["https://stageofvisualization.com", "http://stageofvisualization.local"],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+};
+
+
+// for Socket.IO
+const io = new Server(httpServer, {
+    cors: corsOptions
+});
+
+
+// for Express
+// app.use(cors(corsOptions));
 
 io.on('connection', (socket) => {
     console.log('user connect');
@@ -41,6 +39,6 @@ io.on('connection', (socket) => {
 
 })
 
-server.listen(SERVER_CONFIG.PORT, () => {
+httpServer.listen(SERVER_CONFIG.PORT, () => {
     console.log(`listening on port ${SERVER_CONFIG.PORT}`)
 })
