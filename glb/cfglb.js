@@ -4,4 +4,4 @@ exports.SERVER_CONFIG = {
     'PORT': 443
 };
 
-exports.ENV = 'product';
+exports.ENV = 'localhost';
