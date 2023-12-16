@@ -4,4 +4,4 @@ exports.SERVER_CONFIG = {
     'PORT': 5000
 };
 
-exports.ENV = 'product';
+exports.ENV = 'localhost';
