@@ -1,7 +1,7 @@
 
 exports.SERVER_CONFIG = {
     'HOST': '',
-    'PORT': 3000
+    'PORT': 5000
 };
 
 exports.ENV = 'localhost';
