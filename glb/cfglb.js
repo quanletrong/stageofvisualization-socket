@@ -1,7 +1,7 @@
 
 exports.SERVER_CONFIG = {
     'HOST': '',
-    'PORT': 5000
+    'PORT': 5001
 };
 
 exports.ENV = 'product';
