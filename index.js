@@ -11,8 +11,8 @@ if (ENV === 'localhost') {
     httpServer = http.createServer(app)
 } else {
     const options = {
-        key: fs.readFileSync("/etc/ssl/private/ssl-cert-snakeoil.key"),
-        cert: fs.readFileSync("/etc/ssl/certs/ca-certificates.crt")
+        key: fs.readFileSync("/etc/letsencrypt/live/quancoder.online/privkey.pem"),
+        cert: fs.readFileSync("/etc/letsencrypt/live/quancoder.online/fullchain.pem")
     };
     httpServer = http.createServer(options, app)
 }
