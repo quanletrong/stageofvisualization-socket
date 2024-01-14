@@ -42,6 +42,11 @@ io.on('connection', (socket) => {
     socket.on('update-chat-khach', data => {
         io.emit('update-chat-khach', data)
     })
+
+    socket.on('update-chat-tong', data => {
+        io.emit('update-chat-tong', data)
+    })
+
     socket.on('refresh', data => {
         io.emit('refresh', data)
     })
