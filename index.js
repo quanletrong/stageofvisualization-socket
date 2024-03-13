@@ -59,6 +59,10 @@ io.on('connection', (socket) => {
     socket.on('delete-gchat', data => {
         io.emit('delete-gchat', data)
     })
+
+    socket.on('add-msg-to-group', data => {
+        io.emit('add-msg-to-group', data)
+    })
     // EVENT GCHAT
 
     socket.on('refresh', data => {
