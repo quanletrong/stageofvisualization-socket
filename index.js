@@ -47,6 +47,20 @@ io.on('connection', (socket) => {
         io.emit('update-chat-tong', data)
     })
 
+    // EVENT GCHAT
+    socket.on('add-gchat', data => {
+        io.emit('add-gchat', data)
+    })
+
+    socket.on('edit-gchat', data => {
+        io.emit('edit-gchat', data)
+    })
+
+    socket.on('delete-gchat', data => {
+        io.emit('delete-gchat', data)
+    })
+    // EVENT GCHAT
+
     socket.on('refresh', data => {
         io.emit('refresh', data)
     })
