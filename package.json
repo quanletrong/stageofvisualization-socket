@@ -2,14 +2,18 @@
   "name": "socket-demo",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "admt_utilities": "file:./utilities",
+    "config-custom": "file:./cf",
+    "mdauthentication": "file:./app/middlewares"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

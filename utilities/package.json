@@ -1,0 +1,12 @@
+{
+  "name": "admt_utilities",
+  "version": "1.0.0",
+  "description": "Utilities custom lib for project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Admarket Tech",
+  "license": "ISC"
+}
