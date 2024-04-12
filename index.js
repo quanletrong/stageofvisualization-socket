@@ -2,7 +2,8 @@ import { SERVER_CONFIG } from './glb/cfglb.js';
 import express from 'express';
 import { Server } from 'socket.io';
 import fs from "fs";
-const http = await import(SERVER_CONFIG.ENV === 'localhost' ? 'http' : 'https');
+import http from "https";
+// const http = await import(SERVER_CONFIG.ENV === 'localhost' ? 'http' : 'https');
 import { GLBVARS } from 'config-custom';
 import { Authentication } from 'mdauthentication';
 
