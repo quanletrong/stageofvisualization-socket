@@ -135,10 +135,10 @@ io
 
         socket.on('add-msg-to-gchat', data => {
             //push msg to client by connection id
-            data.member_ids.push(data.action_by);
             data.member_ids.forEach(uid => {
                 if (GLBVARS.arrUserConnectId.hasOwnProperty(uid)) {
                     for (let id of GLBVARS.arrUserConnectId[uid]['cids']) {
+                        console.log(uid, id)
                         io.to(id).emit('add-msg-to-gchat', data);
                     }
                 }
