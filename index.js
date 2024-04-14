@@ -90,6 +90,7 @@ io
                 if (GLBVARS.arrUserConnectId.hasOwnProperty(uid)) {
                     for (let id of GLBVARS.arrUserConnectId[uid]['cids']) {
                         io.to(id).emit('add-gchat', data);
+                        io.to(id).emit('add-msg-to-gchat', data);
                     }
                 }
             })
