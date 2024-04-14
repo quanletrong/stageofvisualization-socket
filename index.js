@@ -31,7 +31,6 @@ const io = new Server(httpServer, {
         credentials: true
     }
 });
-console.log(GLBVARS.arrUserConnectId);
 // socket ON
 io
     .setMaxListeners(0)
@@ -123,14 +122,18 @@ io
                     for (let id of GLBVARS.arrUserConnectId[uid]['cids']) {
                         io.to(id).emit('delete-gchat', data);
                     }
-                } else {
-
                 }
             })
         })
 
         socket.on('delete-gchat', data => {
-            io.emit('delete-gchat', data)
+            data.member_ids.forEach(uid => {
+                if (GLBVARS.arrUserConnectId.hasOwnProperty(uid)) {
+                    for (let id of GLBVARS.arrUserConnectId[uid]['cids']) {
+                        io.to(id).emit('delete-gchat', data);
+                    }
+                } 
+            })
         })
 
         socket.on('add-msg-to-gchat', data => {
@@ -138,7 +141,6 @@ io
             data.member_ids.forEach(uid => {
                 if (GLBVARS.arrUserConnectId.hasOwnProperty(uid)) {
                     for (let id of GLBVARS.arrUserConnectId[uid]['cids']) {
-                        console.log(uid, id)
                         io.to(id).emit('add-msg-to-gchat', data);
                     }
                 }
