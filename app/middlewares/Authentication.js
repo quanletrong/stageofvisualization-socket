@@ -28,11 +28,9 @@ export default class Authentication {
         
         let connectUserId = '0'; // current connection userid
         let connectGroupId = '-1'; // current connection user group id
-        console.log('domainReq:',domainReq);
-        console.log('tokenReq:', tokenReq);
+        
         if(domainReq != '' && tokenReq != '')
         {
-            console.log('here');
             let tokenDecoded = PrivateEncryptData.Decode(tokenReq, encrypt_data_private_key);
             try {
                 let tokenData = JSON.parse(tokenDecoded);
