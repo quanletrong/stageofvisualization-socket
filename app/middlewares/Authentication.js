@@ -28,7 +28,8 @@ export default class Authentication {
         
         let connectUserId = '0'; // current connection userid
         let connectGroupId = '-1'; // current connection user group id
-        console.log(domainReq && tokenReq);
+        console.log('domainReq:',domainReq);
+        console.log('tokenReq:', tokenReq);
         if(domainReq != '' && tokenReq != '')
         {
             console.log('here');
