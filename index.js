@@ -150,13 +150,22 @@ io
         // EVENT GCHAT
 
         socket.on('reaction', data => {
-            console.log(data);
-            
             //push msg to client by connection id
             data.member_ids.forEach(uid => {
                 if (GLBVARS.arrUserConnectId.hasOwnProperty(uid)) {
                     for (let id of GLBVARS.arrUserConnectId[uid]['cids']) {
                         io.to(id).emit('reaction', data);
+                    }
+                }
+            })
+        })
+
+        socket.on('pinned', data => {
+            //push msg to client by connection id
+            data.member_ids.forEach(uid => {
+                if (GLBVARS.arrUserConnectId.hasOwnProperty(uid)) {
+                    for (let id of GLBVARS.arrUserConnectId[uid]['cids']) {
+                        io.to(id).emit('pinned', data);
                     }
                 }
             })
