@@ -171,6 +171,17 @@ io
             })
         })
 
+        socket.on('add-msg-to-customer-room', data => {
+            //push msg to client by connection id
+            data.member_ids.forEach(uid => {
+                if (GLBVARS.arrUserConnectId.hasOwnProperty(uid)) {
+                    for (let id of GLBVARS.arrUserConnectId[uid]['cids']) {
+                        io.to(id).emit('add-msg-to-customer-room', data);
+                    }
+                }
+            })
+        })
+
         socket.on('refresh', data => {
             io.emit('refresh', data)
         })
